@@ -25,19 +25,15 @@ namespace PNG_JPG_TO_DDS
         {
             comboBox1.Text = "dxt1a";
             Directory.CreateDirectory("temp");
-            /// thse are what you see when you hover over the buttons
             toolTip1.SetToolTip(this.btadd, "This is to add them one by one");
             toolTip1.SetToolTip(this.btadddir, "This is for adding a dirtory");
             toolTip1.SetToolTip(this.btClear, "this will purge the list");
             toolTip1.SetToolTip(this.credit, "This will open the credit");
             toolTip1.SetToolTip(this.btstart, "this will start the ");
-            /// this will check to see if the at9tool is present
             if (File.Exists("Data\\nvdxt.exe") == false)
             {
                MessageBox.Show("data\\nvdxt.exe is missing please put it in the data folder", ("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-            /// this will check to see if xWMAEncode.exe is present
-            /// this is going to show the Mesagebox that give the warning if anything is missing it might now work like its suppost to
             MessageBox.Show("if any other required tools are missing this will not work right", ("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             MessageBox.Show("Due to legail reasons i can't include the required tools you will need to find them yourself", ("Warning"), MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             label1.Text = "Add Textures to begin";
@@ -45,7 +41,6 @@ namespace PNG_JPG_TO_DDS
 
         private void btadd_Click(object sender, EventArgs e)
         {
-            /// this is going to add files via the add file button to the listbox
             OpenFileDialog OFD = new OpenFileDialog();
             OFD.Multiselect = true;
             OFD.ShowDialog();
@@ -54,14 +49,11 @@ namespace PNG_JPG_TO_DDS
             {
                 lboxFiles.Items.Add(OFD.SafeFileNames[i]);
             }
-            /// this is going to tell the system that label is the count of the listbox and the " To be converted "
-            /// IE, "5 To be converted "
             label1.Text = lboxFiles.Items.Count + " To be converted ";
         }
 
         private void btadddir_Click(object sender, EventArgs e)
         {
-            /// this is going to add all files via the add dir to the listbox
             FolderBrowserDialog FBD = new FolderBrowserDialog();
             FBD.Description = "Select the texture Folder";
             if (FBD.ShowDialog() == DialogResult.OK)
@@ -97,23 +89,15 @@ namespace PNG_JPG_TO_DDS
                     }
                 }
             }
-            /// this is going to tell the system that label is the count of the listbox and the " To be converted "
-            /// IE, "5 To be converted "
             label1.Text = lboxFiles.Items.Count + " To be converted ";
         }
 
         private void btClear_Click(object sender, EventArgs e)
         {
-            /// this is going to clear the list box
             lboxFiles.Items.Clear();
-            /// this is going to refresh the listbox
             lboxFiles.Refresh();
-            /// this is going to clear the list of file that where in the listbox
             filePaths.Clear();
-            /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
             progressBar1.Maximum = lboxFiles.Items.Count;
-            /// this is going to tell the system that label is the count of the listbox and the " To be converted "
-            /// IE, "5 To be converted "
             label1.Text = lboxFiles.Items.Count + " To be converted ";
         }
 
@@ -148,11 +132,8 @@ namespace PNG_JPG_TO_DDS
                         process.Start();
                         process.WaitForExit();
                         
-                        /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
                         progressBar1.Maximum = lboxFiles.Items.Count;
-                        /// This is going to make it so you can see the bar move
                         System.GC.Collect();
-                        /// this is going to make it move
                         progressBar1.Value++;
                     }
                     else if (filePaths[i].Contains(".jpg"))
@@ -163,12 +144,8 @@ namespace PNG_JPG_TO_DDS
                         process.StartInfo.Arguments = "/c Data\\nvdxt.exe -file \"" + filePaths[i] + "\" -output \"" + filePaths[i].ToString().Replace(".jpg", ".dds") + "\" -rel_scale 1.0, 1.0 -nomipmap -dxt1a\"";
                         process.Start();
                         process.WaitForExit();
-                        
-                        /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
                         progressBar1.Maximum = lboxFiles.Items.Count;
-                        /// This is going to make it so you can see the bar move
                         System.GC.Collect();
-                        /// this is going to make it move
                         progressBar1.Value++;
                     }
                     else if (filePaths[i].Contains(".tga"))
@@ -179,12 +156,8 @@ namespace PNG_JPG_TO_DDS
                         process.StartInfo.Arguments = "/c Data\\nvdxt.exe -file \"" + filePaths[i] + "\" -output \"" + filePaths[i].ToString().Replace(".tga", ".dds") + "\" -rel_scale 1.0, 1.0 -nomipmap -dxt1a\"";
                         process.Start();
                         process.WaitForExit();
-                        
-                        /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
                         progressBar1.Maximum = lboxFiles.Items.Count;
-                        /// This is going to make it so you can see the bar move
                         System.GC.Collect();
-                        /// this is going to make it move
                         progressBar1.Value++;
                     }
                     else if (filePaths[i].Contains(".PNG"))
@@ -195,12 +168,8 @@ namespace PNG_JPG_TO_DDS
                         process.StartInfo.Arguments = "/c Data\\nvdxt.exe -file \"" + filePaths[i] + "\" -output \"" + filePaths[i].ToString().Replace(".PNG", ".dds") + "\" -rel_scale 1.0, 1.0 -nomipmap -dxt1a\"";
                         process.Start();
                         process.WaitForExit();
-                        
-                        /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
                         progressBar1.Maximum = lboxFiles.Items.Count;
-                        /// This is going to make it so you can see the bar move
                         System.GC.Collect();
-                        /// this is going to make it move
                         progressBar1.Value++;
                     }
                     else if (filePaths[i].Contains(".JPG"))
@@ -211,12 +180,8 @@ namespace PNG_JPG_TO_DDS
                         process.StartInfo.Arguments = "/c Data\\nvdxt.exe -file \"" + filePaths[i] + "\" -output \"" + filePaths[i].ToString().Replace(".JPG", ".dds") + "\" -rel_scale 1.0, 1.0 -nomipmap -dxt1a\"";
                         process.Start();
                         process.WaitForExit();
-                        
-                        /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
                         progressBar1.Maximum = lboxFiles.Items.Count;
-                        /// This is going to make it so you can see the bar move
                         System.GC.Collect();
-                        /// this is going to make it move
                         progressBar1.Value++;
                     }
                     else if (filePaths[i].Contains(".TGA"))
@@ -228,11 +193,8 @@ namespace PNG_JPG_TO_DDS
                         process.Start();
                         process.WaitForExit();
                         
-                        /// this is going to make the progress bar know how many files there are so it can move the bar acordingly
                         progressBar1.Maximum = lboxFiles.Items.Count;
-                        /// This is going to make it so you can see the bar move
                         System.GC.Collect();
-                        /// this is going to make it move
                         progressBar1.Value++;
                     }
                 }
