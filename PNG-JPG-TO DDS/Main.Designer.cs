@@ -42,7 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.PNGTGAJPG = new System.Windows.Forms.CheckBox();
+            this.RCClean = new System.Windows.Forms.CheckBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btstart
@@ -66,6 +67,7 @@
             this.btClear.Size = new System.Drawing.Size(128, 23);
             this.btClear.TabIndex = 92;
             this.btClear.Text = "Purge list";
+            this.toolTip1.SetToolTip(this.btClear, "this will purge the list");
             this.btClear.UseVisualStyleBackColor = true;
             this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
@@ -78,6 +80,7 @@
             this.btadddir.Size = new System.Drawing.Size(128, 23);
             this.btadddir.TabIndex = 91;
             this.btadddir.Text = "Add Directory(s)";
+            this.toolTip1.SetToolTip(this.btadddir, "This is for adding a dirtory");
             this.btadddir.UseVisualStyleBackColor = true;
             this.btadddir.Click += new System.EventHandler(this.btadddir_Click);
             // 
@@ -90,6 +93,7 @@
             this.btadd.Size = new System.Drawing.Size(128, 23);
             this.btadd.TabIndex = 90;
             this.btadd.Text = "Add File(s)";
+            this.toolTip1.SetToolTip(this.btadd, "This is to add them one by one");
             this.btadd.UseVisualStyleBackColor = true;
             this.btadd.Click += new System.EventHandler(this.btadd_Click);
             // 
@@ -116,6 +120,7 @@
             this.credit.Size = new System.Drawing.Size(128, 23);
             this.credit.TabIndex = 95;
             this.credit.Text = "Credits";
+            this.toolTip1.SetToolTip(this.credit, "This will open the credit");
             this.credit.UseVisualStyleBackColor = true;
             this.credit.Click += new System.EventHandler(this.credit_Click);
             // 
@@ -170,24 +175,28 @@
             this.comboBox1.Size = new System.Drawing.Size(128, 21);
             this.comboBox1.TabIndex = 100;
             // 
-            // PNGTGAJPG
+            // RCClean
             // 
-            this.PNGTGAJPG.AutoSize = true;
-            this.PNGTGAJPG.Checked = true;
-            this.PNGTGAJPG.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.PNGTGAJPG.Location = new System.Drawing.Point(658, 224);
-            this.PNGTGAJPG.Name = "PNGTGAJPG";
-            this.PNGTGAJPG.Size = new System.Drawing.Size(132, 30);
-            this.PNGTGAJPG.TabIndex = 101;
-            this.PNGTGAJPG.Text = "Delete Orginal Texture\r\n(*.png *.jpg *.tga)";
-            this.PNGTGAJPG.UseVisualStyleBackColor = true;
+            this.RCClean.AutoSize = true;
+            this.RCClean.Checked = true;
+            this.RCClean.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.RCClean.Location = new System.Drawing.Point(658, 224);
+            this.RCClean.Name = "RCClean";
+            this.RCClean.Size = new System.Drawing.Size(132, 30);
+            this.RCClean.TabIndex = 101;
+            this.RCClean.Text = "Delete Orginal Texture\r\n(*.png *.jpg *.tga)";
+            this.RCClean.UseVisualStyleBackColor = true;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 387);
-            this.Controls.Add(this.PNGTGAJPG);
+            this.Controls.Add(this.RCClean);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btstart);
             this.Controls.Add(this.btClear);
@@ -221,7 +230,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox PNGTGAJPG;
+        private System.Windows.Forms.CheckBox RCClean;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
